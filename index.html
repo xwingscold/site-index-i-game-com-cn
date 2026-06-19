@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>爱游戏 · 杂志专题</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f4f9fc;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #1b2f3c;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .magazine {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 36px 36px 24px 24px;
+      box-shadow: 0 12px 30px rgba(18, 52, 77, 0.08);
+      overflow: hidden;
+    }
+
+    /* 首页横幅 — 杂志折页感 */
+    .hero {
+      background: linear-gradient(135deg, #0e4b5e 0%, #1a7a8a 45%, #3da4ab 100%);
+      padding: 3.2rem 2rem 2.8rem;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: white;
+      border-radius: 30px 30px 0 0;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: 4px;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 6px rgba(0,20,30,0.2);
+    }
+
+    .hero h1 span {
+      font-weight: 700;
+      background: rgba(255,255,240,0.18);
+      padding: 0 10px 0 12px;
+      border-radius: 40px;
+      display: inline-block;
+      backdrop-filter: blur(1px);
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      letter-spacing: 2px;
+      margin-top: 6px;
+      font-weight: 300;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      margin-top: 14px;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(2px);
+      padding: 6px 22px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #e6f7f5;
+    }
+
+    /* 卡片网格 — 蓝绿点缀 */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 30px 24px 16px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 4px 12px rgba(28, 68, 80, 0.06);
+      border: 1px solid #dceff3;
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 20px rgba(30, 90, 100, 0.08);
+      transform: translateY(-3px);
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #175a69;
+      border-left: 5px solid #38b2ac;
+      padding-left: 14px;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      color: #2a4653;
+      font-size: 0.98rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card .tag {
+      display: inline-block;
+      background: #d8f0f0;
+      color: #0a5a64;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 2px 14px;
+      border-radius: 30px;
+      margin-right: 6px;
+      margin-top: 6px;
+    }
+
+    .full-row {
+      padding: 0 24px 18px;
+    }
+
+    .full-row .card {
+      background: #f0f9fb;
+      border: 1px solid #bdd9df;
+    }
+
+    .full-row .card p {
+      font-size: 1rem;
+    }
+
+    /* 场景说明 + 引用式 */
+    .scene-note {
+      background: #e5f3f5;
+      margin: 8px 24px 20px;
+      padding: 1.2rem 1.8rem;
+      border-radius: 48px 24px 48px 24px;
+      border-left: 6px solid #2c8c96;
+    }
+
+    .scene-note p {
+      font-size: 0.98rem;
+      color: #153e48;
+      font-style: normal;
+    }
+
+    .scene-note strong {
+      color: #0c6a72;
+      font-weight: 600;
+    }
+
+    /* FAQ 摘要 — 紧凑 */
+    .faq-mini {
+      padding: 10px 24px 20px;
+    }
+
+    .faq-mini details {
+      background: #f9fdfe;
+      border-radius: 30px;
+      padding: 12px 20px;
+      margin-bottom: 10px;
+      border: 1px solid #cbe3e9;
+      transition: 0.15s;
+    }
+
+    .faq-mini summary {
+      font-weight: 550;
+      color: #165360;
+      cursor: pointer;
+      padding: 4px 0;
+      font-size: 0.98rem;
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .faq-mini summary::before {
+      content: '▹';
+      color: #2f9ca5;
+      font-size: 1.2rem;
+      margin-right: 10px;
+    }
+
+    .faq-mini details[open] summary::before {
+      content: '▿';
+    }
+
+    .faq-mini details p {
+      margin-top: 12px;
+      padding-left: 24px;
+      color: #2c5562;
+      font-size: 0.92rem;
+      border-left: 2px dashed #aacfd6;
+    }
+
+    /* 页尾 */
+    .footer-note {
+      background: #eaf3f5;
+      margin-top: 10px;
+      padding: 1.6rem 24px 1.8rem;
+      text-align: center;
+      border-top: 1px solid #c7dee3;
+    }
+
+    .footer-note p {
+      color: #1f4d59;
+      font-size: 0.98rem;
+      letter-spacing: 0.3px;
+    }
+
+    .footer-note a {
+      color: #0a6975;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid #7bc1c5;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .footer-note a:hover {
+      color: #043d47;
+      border-bottom-color: #043d47;
+    }
+
+    .footer-note .small-meta {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: #59838d;
+    }
+
+    /* 响应式 */
+    @media (max-width: 680px) {
+      body { padding: 12px; }
+      .hero { padding: 2.2rem 1.2rem 2.2rem; }
+      .hero h1 { font-size: 2rem; letter-spacing: 2px; }
+      .grid-2 { grid-template-columns: 1fr; gap: 16px; padding: 20px 16px 10px; }
+      .full-row { padding: 0 16px 12px; }
+      .scene-note { margin: 8px 16px 16px; padding: 1rem 1.2rem; }
+      .faq-mini { padding: 6px 16px 16px; }
+      .footer-note { padding: 1.4rem 16px 1.6rem; }
+    }
+
+    @media (max-width: 420px) {
+      .hero h1 { font-size: 1.7rem; }
+      .card h3 { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="magazine">
+
+  <!-- 首页横幅 -->
+  <div class="hero">
+    <h1><span>爱游戏</span> · 再发现</h1>
+    <div class="sub">杂志专题 &nbsp;|&nbsp; 收藏·回顾·常来常新</div>
+    <div class="badge">✦ 第三次访问特辑 ✦</div>
+  </div>
+
+  <!-- 背景说明：卡片网格第一行 -->
+  <div class="grid-2">
+    <div class="card">
+      <h3>每次打开都像初见</h3>
+      <p>有些站点去一次就忘了，而<strong>爱游戏</strong>值得你放进书签栏。不只是因为内容时常更新，更因为每次浏览都能撞见合胃口的独立游戏或冷门佳作。</p>
+      <span class="tag">常访</span>
+      <span class="tag">书签</span>
+    </div>
+    <div class="card">
+      <h3>从哪来，到哪去</h3>
+      <p>从最初的游戏收录页面，逐渐长成一个有温度的索引库。没有花哨的弹窗，只有编辑精选、玩家推荐和一条清晰的逛游路径。</p>
+      <span class="tag">索引</span>
+      <span class="tag">精选</span>
+    </div>
+  </div>
+
+  <!-- 三段自然介绍之第二段：收藏与持续关注 -->
+  <div class="full-row">
+    <div class="card">
+      <h3>收藏夹里的老朋友</h3>
+      <p>很多人习惯把好玩的站点放进收藏夹，然后……再也没打开过。<a href="https://site-index-i-game.com.cn">爱游戏</a>却是个例外——因为它的列表里总有新面孔，偶尔翻出来逛一圈，又能发现之前漏掉的好东西。持续关注它的更新，就像订阅一本不定期出刊的游戏小册。没有推送轰炸，但每次打开都有回响。</p>
+      <p style="margin-top: 8px;">如果你偏爱轻量、直接、不啰嗦的游戏导航，不妨把它留在书签栏，隔段时间回来坐坐。</p>
+    </div>
+  </div>
+
+  <!-- 第三段：场景化介绍 + 生活感 -->
+  <div class="scene-note">
+    <p><strong>▸ 周末下午·游戏荒</strong> 打开收藏夹点进爱游戏，从「最近更新」板块随手挑一个看起来顺眼的，经常能消磨一整个晚上。没有大数据推荐，反而多了分偶遇的惊喜。</p>
+    <p style="margin-top: 10px;"><strong>▸ 碎片时间·云逛</strong> 等人或者通勤时刷两屏，看看截图和一句话简介，遇到感兴趣的标记一下，回头再细看。节奏由自己掌握。</p>
+  </div>
+
+  <!-- FAQ 摘要（非完整，仅摘取贴合主题的问题） -->
+  <div class="faq-mini">
+    <details>
+      <summary>爱游戏的内容来源可靠吗？</summary>
+      <p>网站收录的游戏均经过编辑筛选，主要来自独立开发者、官方商店及玩家社区推荐，非自动化采集。每款游戏都附有简要描述和出处链接。</p>
+    </details>
+    <details>
+      <summary>需要注册或登录才能浏览吗？</summary>
+      <p>不需要。爱游戏是一个公开索引页，所有内容对访客开放。没有会员系统，也没有隐藏页面，打开即看。</p>
+    </details>
+    <details>
+      <summary>如何及时获知站点更新？</summary>
+      <p>目前没有邮件订阅，但你可以把页面加入浏览器书签，每隔一两周回访一次。更新频率大约每月 2～4 次，每次新增数款游戏。</p>
+    </details>
+  </div>
+
+  <!-- 页尾访问提示 -->
+  <div class="footer-note">
+    <p>你已经不止一次回到这里 —— 再次收藏或顺手分享给朋友，都是对<a href="https://site-index-i-game.com.cn">爱游戏</a>最好的支持。</p>
+    <span class="small-meta">杂志专题 · 第三次访问纪念 · 保持好奇</span>
+  </div>
+
+</div>
+</body>
+</html>

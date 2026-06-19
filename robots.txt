@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://xwingscold.github.io/site-index-i-game-com-cn/sitemap.xml
