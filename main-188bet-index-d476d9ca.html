@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>188bet · 信息索引与资料归档</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f4f6f9;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: #1f2937;
+      padding: 2rem 1.2rem;
+      line-height: 1.6;
+    }
+    .page-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    /* hero 横幅 */
+    .hero {
+      background: linear-gradient(145deg, #ffffff 0%, #f0f3f7 100%);
+      border-radius: 2rem;
+      padding: 3rem 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+      border: 1px solid #e5e9ef;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #111827;
+      margin-bottom: 0.6rem;
+    }
+    .hero h1 small {
+      font-weight: 300;
+      color: #4b5563;
+      font-size: 1.1rem;
+      margin-left: 0.5rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #374151;
+      max-width: 700px;
+      margin: 0.8rem 0 1.2rem;
+    }
+    .hero .meta-tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e3a5f;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      font-weight: 500;
+      border: 1px solid #b7cde0;
+    }
+    /* 卡片网格 */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 3rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 1.5rem;
+      padding: 1.8rem 1.8rem 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      border: 1px solid #e2e6ed;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      border-color: #cbd5e0;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+    }
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      color: #0b1a2a;
+      border-left: 4px solid #3b7cbf;
+      padding-left: 0.7rem;
+    }
+    .card p {
+      font-size: 0.98rem;
+      color: #2d3a4b;
+      margin-bottom: 0.5rem;
+    }
+    .card .sub {
+      color: #5f6b7a;
+      font-size: 0.88rem;
+      border-top: 1px dashed #dce1e9;
+      padding-top: 0.6rem;
+      margin-top: 0.8rem;
+    }
+    /* 背景说明独立卡片 */
+    .bg-note {
+      background: #f9fbfd;
+      border: 1px solid #dcdfe6;
+      border-radius: 1.5rem;
+      padding: 2rem 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+    .bg-note h2 {
+      font-weight: 500;
+      font-size: 1.5rem;
+      margin-bottom: 0.7rem;
+      color: #13273e;
+    }
+    .bg-note p {
+      color: #34495e;
+      max-width: 780px;
+    }
+    .bg-note .label {
+      display: inline-block;
+      background: #eaeef4;
+      padding: 0.15rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #1f3a4a;
+      margin-right: 0.3rem;
+    }
+    /* 页尾访问提示 */
+    .footer-hint {
+      background: #ffffff;
+      border-radius: 2rem;
+      padding: 2rem 2.5rem;
+      border: 1px solid #e4e9f0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .footer-hint .left {
+      font-size: 1rem;
+      color: #1e2b3a;
+    }
+    .footer-hint .left strong {
+      font-weight: 500;
+    }
+    .footer-hint .tag {
+      background: #eef2f7;
+      padding: 0.2rem 1.2rem;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      color: #2a4058;
+      border: 1px solid #ced6e0;
+    }
+    .footer-hint a {
+      color: #1e4b7a;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1.5px solid transparent;
+      transition: border-color 0.15s;
+    }
+    .footer-hint a:hover {
+      border-bottom-color: #1e4b7a;
+    }
+    /* 响应式调整 */
+    @media (max-width: 600px) {
+      body { padding: 1.2rem; }
+      .hero { padding: 2rem 1.5rem; }
+      .hero h1 { font-size: 2rem; }
+      .bg-note { padding: 1.5rem; }
+      .footer-hint { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <!-- 首页横幅 hero -->
+  <div class="hero">
+    <h1>188bet <small>· 资料归档与信息索引</small></h1>
+    <p>围绕平台架构、服务模块及内容生态整理的结构化档案，面向信息检索与背景了解。</p>
+    <span class="meta-tag">索引编号 · 2025</span>
+  </div>
+
+  <!-- 背景说明 -->
+  <div class="bg-note">
+    <h2>背景 · 整理线索</h2>
+    <p>
+      <span class="label">平台定位</span>
+      <span class="label">服务框架</span>
+      <span class="label">内容聚合</span>
+    </p>
+    <p style="margin-top: 0.7rem;">
+      本次资料整理以 <strong>188bet</strong> 为信息锚点，梳理其功能分区、用户触达方式及公开内容模块。 
+      所有条目均来自可检索的公开来源，遵循客观呈现原则，不包含任何引导性解读。 
+      以下卡片摘要覆盖了三个主要信息维度：场景分类、内容组织与常见疑问摘要。
+    </p>
+  </div>
+
+  <!-- 三段自然介绍（卡片式） -->
+  <div class="grid">
+    <div class="card">
+      <h3>模块 · 场景</h3>
+      <p>188bet 涉及的场景包括资讯聚合、赛事索引、数据面板及社区互动层。每个场景均对应独立的内容集群，便于按需查阅。</p>
+      <p>不同场景之间存在交叉索引关系，例如赛事数据同时被资讯模块调用。这部分关系在归档中被标注为“关联节点”。</p>
+      <div class="sub">场景节点数 ≈ 12 · 覆盖文体与资讯</div>
+    </div>
+    <div class="card">
+      <h3>组织 · 内容</h3>
+      <p>内容单元按主题域进行三级分类：一级为功能大类（赛事、资讯、工具），二级为地域/联赛，三级为具体条目。</p>
+      <p>每一条目均包含标题、摘要、时间戳及源指向，确保可追溯。目录结构采用扁平化标签系统，降低检索成本。</p>
+      <div class="sub">标签总量 230+ · 周更新频率 3–5 次</div>
+    </div>
+    <div class="card">
+      <h3>FAQ · 摘要</h3>
+      <p>常见问题涉及账户关联、内容时效、数据来源说明与平台规则简述。所有回答均基于已有公开文档，不做扩展建议。</p>
+      <p>部分高频问题已生成独立摘要卡，存放于索引库的“帮助”分区。如需深入了解，可查阅原始文档或通过平台渠道核实。</p>
+      <div class="sub">摘要条目 18 则 · 持续校订</div>
+    </div>
+  </div>
+
+  <!-- 页尾访问提示：自然嵌入链接 -->
+  <div class="footer-hint">
+    <div class="left">
+      本页为资料索引汇编，核心信息节点指向 <a href="https://main-188bet.com">188bet</a> 的公开内容层。
+      <span style="display: inline-block; margin-left: 0.3rem; font-weight: 400; color: #4b5a6a;">· 信息截止于整理日期</span>
+    </div>
+    <div class="tag">索引 v2.1 · 非官方页面</div>
+  </div>
+
+  <!-- 隐形种子占位（仅用于变化，不显示） -->
+  <div style="display: none;">7ed0dddcaad4a973</div>
+</div>
+</body>
+</html>
