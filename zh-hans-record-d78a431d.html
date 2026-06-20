@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雷火电竞 · 可信电竞介绍页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fdefd4 0%, #f9d9b5 40%, #f1c79a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.2rem;
+            line-height: 1.7;
+            color: #2c241b;
+        }
+
+        .container {
+            max-width: 980px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* 白色内容卡片 */
+        .card {
+            background: rgba(255, 252, 245, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 48px 24px 48px 24px;
+            box-shadow: 0 20px 40px -10px rgba(150, 90, 40, 0.25), 0 8px 16px rgba(0,0,0,0.04);
+            padding: 3rem 2.8rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 2rem 1.6rem;
+                border-radius: 32px 16px 32px 16px;
+            }
+            body {
+                padding: 1rem 0.8rem;
+            }
+        }
+
+        /* 开场短句 —— 类似引子 */
+        .opening-line {
+            font-size: 1.9rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            color: #8b5a2e;
+            background: rgba(241, 199, 138, 0.2);
+            display: inline-block;
+            padding: 0.2rem 1.8rem 0.2rem 0;
+            border-radius: 0 40px 40px 0;
+            margin-bottom: 1.6rem;
+            line-height: 1.4;
+            border-left: 5px solid #cc8b5c;
+        }
+
+        .opening-line span {
+            font-weight: 500;
+            color: #4d2f1a;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #3b281b;
+            margin-top: 0.2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .subhead {
+            font-size: 1.2rem;
+            color: #68513b;
+            margin-bottom: 2.2rem;
+            font-weight: 350;
+            border-bottom: 2px dashed #e3c7ae;
+            padding-bottom: 0.8rem;
+        }
+
+        /* 承接段落 */
+        .intro-text p {
+            margin-bottom: 1.4rem;
+            font-size: 1.04rem;
+        }
+
+        .intro-text strong {
+            color: #7b4b26;
+            font-weight: 600;
+        }
+
+        /* 特点列表 —— 温和卡片式 */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
+            margin: 2.2rem 0 2rem 0;
+        }
+
+        .feature-item {
+            background: #f7efe6;
+            padding: 0.6rem 1.4rem 0.6rem 1.2rem;
+            border-radius: 60px 20px 20px 60px;
+            font-size: 0.98rem;
+            border-left: 4px solid #dba478;
+            box-shadow: 0 2px 6px rgba(190, 140, 80, 0.08);
+            color: #3b2a1d;
+            flex: 1 1 200px;
+        }
+
+        .feature-item::before {
+            content: "·";
+            color: #b47d53;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+
+        /* 场景说明 (一句话带过) */
+        .scene-note {
+            background: #faf1e7;
+            border-radius: 40px 12px 40px 12px;
+            padding: 1.4rem 2rem;
+            margin: 1.8rem 0 2rem 0;
+            font-style: normal;
+            border: 1px solid #eddccb;
+            color: #4d3728;
+            font-size: 1.02rem;
+        }
+
+        .scene-note i {
+            font-style: normal;
+            background: #dbb69350;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+        }
+
+        /* 链接样式 —— 圆角按钮感 */
+        a {
+            text-decoration: none;
+            color: #2f1f13;
+            background: #f3e3d2;
+            padding: 0.25rem 1rem 0.3rem 1rem;
+            border-radius: 60px;
+            font-weight: 500;
+            transition: all 0.15s ease;
+            border: 1px solid transparent;
+            display: inline-block;
+            line-height: 1.6;
+            box-shadow: 0 2px 4px rgba(140, 90, 40, 0.04);
+        }
+
+        a:hover {
+            background: #dba478;
+            color: #fcf8f0;
+            border-color: #b47d53;
+            box-shadow: 0 4px 12px rgba(180, 110, 50, 0.2);
+            transform: translateY(-1px);
+        }
+
+        a:active {
+            transform: scale(0.97);
+        }
+
+        /* 温和结尾区域 */
+        .gentle-footer {
+            margin-top: 2.8rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid #edd5bf;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem 1.5rem;
+        }
+
+        .gentle-footer .footnote {
+            color: #5c4635;
+            font-size: 0.94rem;
+            background: rgba(255,225,200,0.3);
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+        }
+
+        .gentle-footer .faq-mini {
+            font-size: 0.95rem;
+            color: #452f21;
+            background: #f5e7db;
+            padding: 0.5rem 1.4rem;
+            border-radius: 80px;
+            display: inline-block;
+        }
+
+        .faq-mini summary {
+            cursor: default;
+            list-style: none;
+            font-weight: 450;
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-mini[open] summary {
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-mini p {
+            font-size: 0.9rem;
+            margin: 0.2rem 0 0 0;
+            padding: 0.2rem 0.4rem;
+            border-left: 3px solid #dba478;
+            padding-left: 0.8rem;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 500px) {
+            .opening-line {
+                font-size: 1.5rem;
+                padding-right: 1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .feature-grid {
+                flex-direction: column;
+            }
+            .gentle-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <!-- 开场短句 -->
+            <div class="opening-line">
+                <span>✦</span> 既见竞技，亦见可信
+            </div>
+
+            <h1>雷火电竞 · 站点与底色</h1>
+            <div class="subhead">从介绍与可信说明的角度，认识这个电竞世界</div>
+
+            <!-- 承接段落 1 · 站点介绍 -->
+            <div class="intro-text">
+                <p>
+                    在中文互联网的电竞版图里，<a href="https://zh-hans-leihuo.com">雷火电竞</a> 
+                    是一个以信息聚合与赛事关注为核心呈现的站点。它并非某个电竞俱乐部的官网，
+                    也不扮演平台入口的角色 —— 它的存在更像一盏安静的侧灯，
+                    照亮那些值得被留意的比赛、队伍以及电竞赛事背后的脉络。
+                </p>
+                <p>
+                    许多访问者第一次接触这个域名，往往是因为查阅某场次级联赛的赛果，
+                    或是追踪某个选手的近期数据。<strong>雷火电竞</strong> 并不刻意制造资讯噪音，
+                    而是尝试在片段化的信息流里，提供一种相对沉着的阅读节奏。
+                </p>
+            </div>
+
+            <!-- 特点列表 · 温和列举 -->
+            <div class="feature-grid">
+                <span class="feature-item">赛事档案的整理与归类</span>
+                <span class="feature-item">不煽动、不浮夸的叙述语调</span>
+                <span class="feature-item">聚焦主流与区域联赛的交叉点</span>
+                <span class="feature-item">克制的信息密度，留白充足</span>
+                <span class="feature-item">无弹窗、无诱导性跳转</span>
+            </div>
+
+            <!-- 场景说明段落 (知识型) -->
+            <div class="scene-note">
+                <i>场景侧写：</i> 一位关注电竞生态的爱好者，可能在深夜打开 
+                <a href="https://zh-hans-leihuo.com">雷火电竞</a> 的某个页面，
+                不是为了追逐最新的转会流言，而是想确认一场两个月前突围赛的BP顺序。
+                这种“往回看”的需求，恰好是它内容结构的着力点之一。
+            </div>
+
+            <!-- 承接段落 2 · 可信说明 -->
+            <div class="intro-text">
+                <p>
+                    关于可信度：<strong>雷火电竞</strong> 的页面内容以公开赛事数据与可追溯信息为骨架，
+                    不捏造赛果，不渲染赔率，也不标注任何未经证实的“内部消息”。
+                    对于一支队伍的历史战绩或某项赛事的规则变更，它倾向于引用可查的官方记录，
+                    并在段落中保留原有时序。
+                </p>
+                <p>
+                    当然，电竞世界变动频繁，任何站点都无法穷尽所有细节。
+                    如果你在 <a href="https://zh-hans-leihuo.com">雷火电竞</a> 发现信息偏差，
+                    那通常源于数据同步的时差，而非刻意误导 —— 这也是它始终在简介页坦诚说明的一点。
+                </p>
+            </div>
+
+            <!-- 温和结尾 + FAQ 摘要 -->
+            <div class="gentle-footer">
+                <div class="footnote">
+                    ☕ 保持低视角，关注比赛本身。
+                </div>
+                <details class="faq-mini">
+                    <summary>⤵ 常见疑问摘要</summary>
+                    <p><strong>Q：</strong> 这个站点适合新手吗？<br>
+                    <strong>A：</strong> 内容没有门槛，但更适合对赛事已有基本认知的读者。页面不包含新手引导弹窗。</p>
+                    <p style="margin-top: 0.5rem;"><strong>Q：</strong> 是否每天更新？<br>
+                    <strong>A：</strong> 更新频率随赛季节奏变化，休赛期以归档性内容为主。</p>
+                </details>
+                <div style="font-size: 0.9rem; color: #7a5f48; opacity: 0.7;">
+                    · 页面版本 2025 ·
+                </div>
+            </div>
+
+            <!-- 隐形创作种子：不影响显示，仅用于变化 -->
+            <div style="display: none;">a7584d08b468e862</div>
+        </div>
+    </div>
+</body>
+</html>
